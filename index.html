@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html class=''>
+
+<head>
+  <meta charset='UTF-8'>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="styles.css" />
+  <title>Calculator example with VueJS1</title>
+</head>
+
+<body>
+  <div class="container">
+    <div id="calculator">
+      <input id="screen" type="text" v-model="message" />
+      <div class="buttons">
+        <div v-on:click="clear" class="button">{{ message == 0 ? 'AC' : 'C' }}</div>
+        <div v-on:click="inverse" class="button">+/-</div>
+        <div v-on:click="percentage" class="button">%</div>
+        <div v-on:click="operator('/')" class="button">/</div>
+        <div v-on:click="input('7')" class="button">7</div>
+        <div v-on:click="input('8')" class="button">8</div>
+        <div v-on:click="input('9')" class="button">9</div>
+        <div v-on:click="operator('*')" class="button">*</div>
+        <div v-on:click="input('4')" class="button">4</div>
+        <div v-on:click="input('5')" class="button">5</div>
+        <div v-on:click="input('6')" class="button">6</div>
+        <div v-on:click="operator('-')" class="button">-</div>
+        <div v-on:click="input('1')" class="button">1</div>
+        <div v-on:click="input('2')" class="button">2</div>
+        <div v-on:click="input('3')" class="button">3</div>
+        <div v-on:click="operator('+')" class="button">+</div>
+        <div id="zero" v-on:click="input('0')" class="button">0</div>
+        <div v-on:click="input('.')" class="button">.</div>
+        <div v-on:click="equal" class="button">=</div>
+      </div>
+    </div>
+  </div>
+  <!-- Javascript scripts -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.26/vue.min.js'></script>
+  <script>new Vue({
+      el: '#calculator',
+      data: {
+        value: '',
+        message: '0',
+        equation: '',
+        cal: ''
+      },
+      methods: {
+        input: function (num) {
+          if (num == '.' && this.message.includes('.'))
+            return;
+          else if (this.message == '0') {
+            this.message = num;
+            this.value = num;
+          }
+          else {
+            this.value += num;
+            this.message = this.value;
+          }
+        },
+        clear: function () {
+          if (this.message == '0')
+            this.equation = '';
+          this.message = '0';
+          this.value = '';
+        },
+        operator: function (opt) {
+          this.cal = opt;
+          this.equation += this.value;
+          this.message = eval(this.equation).toString();
+          this.equation = this.message;
+          this.equation += opt;
+          this.value = '';
+          // console.log(this.equation);
+        },
+        percentage: function () {
+          this.equation = '';
+          this.message = (this.message / 100).toString();
+          this.value = this.message;
+        },
+        inverse: function () {
+          if (this.message == 0)
+            return false;
+          this.equation = '';
+          if (this.message[0] == '-')
+            this.message = this.message.substr(1);
+          else
+            this.message = '-' + this.message;
+          this.value = this.message;
+        },
+        equal: function () {
+          if (this.equation == '')
+            return;
+          if (this.cal != '')
+            this.equation += this.message;
+          this.message = eval(this.equation).toString();
+          // console.log(eval(this.equation));
+          this.value = '';
+          this.cal = '';
+          this.equation = this.message;
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

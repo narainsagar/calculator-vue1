@@ -1,0 +1,81 @@
+.container {
+  height: 50rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.container #calculator {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 20rem;
+  background-color: #1d1f20;
+}
+
+.container #calculator #screen {
+  padding-top: 4.5rem;
+  font-size: 4.5rem;
+  text-align: right;
+  border: none;
+  color: #FFFFFF;
+  background-color: #1d1f20;
+  border-radius: 0;
+}
+
+.container #calculator .buttons {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  background-color: #d7d4f0;
+}
+
+.container #calculator .buttons .button {
+  width: 25%;
+  padding: 1.5rem 0;
+  text-align: center;
+  border: #343436 1px solid;
+  box-sizing: border-box;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+}
+
+.container #calculator .buttons .button:nth-child(4n),
+.container #calculator .buttons .button:last-child {
+  background-color: #d0782a;
+}
+
+.container #calculator .buttons .button:hover {
+  -webkit-filter: opacity(0.8);
+  filter: opacity(0.8);
+}
+
+.container #calculator .buttons .button:active {
+  box-shadow: 2px 2px 10px #666 inset;
+}
+
+.container #calculator .buttons #zero {
+  text-align: left;
+  padding-left: 2rem;
+  -webkit-box-flex: 2;
+  -ms-flex-positive: 2;
+  flex-grow: 2;
+}

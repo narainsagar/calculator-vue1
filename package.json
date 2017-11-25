@@ -1,0 +1,22 @@
+{
+  "name": "calculator-vue1",
+  "version": "1.0.0",
+  "description": "Simple calculator example using VueJS1",
+  "main": "index.js",
+  "author": "Narain Sagar <narainmenghwar@gmail.com>",
+  "license": "ISC",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "build": "mkdir ./dist && cp index.html ./dist/index.html && cp styles.css ./dist/styles.css",
+    "predeploy": "npm run clean && npm run build",
+    "deploy": "npm run predeploy && gh-pages -d ./dist"
+  },
+  "keywords": [
+    "Vue.js",
+    "Vue1",
+    "Vue"
+  ],
+  "devDependencies": {
+    "gh-pages": "^1.1.0"
+  }
+}
